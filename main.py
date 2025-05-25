@@ -329,12 +329,17 @@ if __name__ == '__main__':
     default_font = QFont("Open Sans", 14)
     app.setFont(default_font)
 
-    splash = LoadingScreen()
+    splash_pix = QPixmap(os.path.join(PATH_TO_IMG, "logoLQ.png"))
+    splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
+    splash.setMask(splash_pix.mask())
+    splash.show()
     app.processEvents()
 
-    time.sleep(2)
+    # time.sleep(2)
 
     window = Ui()
+    window.show()
+
     splash.finish(window)
     checkDBConnection()
 
